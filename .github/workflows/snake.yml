@@ -22,8 +22,11 @@ jobs:
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          # NOTE: '#' in a query string MUST be URL-encoded as %23, or the SVG
+          # bakes invalid CSS colors and the snake/dots render black.
           outputs: |
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=64ffda&color_dots=0a192f,0e3a5f,1d5c8c,3a86b8,64ffda
+            dist/github-snake-dark.svg?palette=github-dark&color_snake=%2364ffda&color_dots=%23161b22,%2330363d,%23484f58,%23636c76,%238b949e
+            dist/github-snake.svg?palette=github-light&color_snake=%230a7ea4&color_dots=%23ebedf0,%23c6e6ee,%237fcadd,%2335a9c9,%230a7ea4
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
